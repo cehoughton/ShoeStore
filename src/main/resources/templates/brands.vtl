@@ -1,0 +1,20 @@
+<h1>Shoe Brands!</h1>
+
+<p>Add a new brand:</p>
+
+<form action="/brands" method="post">
+  <label for="description">Brand Description</label>
+  <input id="description" name="description" type="text">
+  <input id="duedate" name="due_date" type="date">
+  <button type="submit">Add brand</button>
+</form>
+
+#foreach ($brand in $brands)
+  #if ($brand.isDone())
+    <li><del><a href="/brands/$brand.getId()">$brand.getDescription()</a></del></li>
+  #else
+    <li><a href="/brands/$brand.getId()">$brand.getDescription()</a></li>
+  #end
+#end
+
+<p><a href='/'>Home</a></p>

@@ -1,0 +1,28 @@
+<h1>$store.getName()</h1>
+
+#if($store.getBrands())
+  <p>Here are the brands for this store:</p>
+  <ul>
+
+        <li><a href="/brands/$brand.getId()">$brand.getDescription()</a> </li>
+
+    #end
+  </ul>
+#end
+
+<h4>Add a brand to this store:</h4>
+
+<form action='/add_brands' method='post'>
+    <input id="store_id" name="store_id" type="hidden" value="$store.getId()">
+    <label for="brand_id">Select a brand</label>
+    <select id='brand_id' name='brand_id' type='text'>
+      #foreach($brand in $allBrands)
+        <option value="$brand.getId()"> $brand.getDescription() </option>
+      #end
+    </select>
+    <button type='submit'>Add brand</button>
+</form>
+
+<p><a href="/stores/$store.getId()/edit">Edit this store</a></p>
+
+<p><a href='/'>Home</a></p>

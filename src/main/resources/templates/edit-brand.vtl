@@ -1,0 +1,21 @@
+<h1>$brand.getDescription()</h1>
+
+
+#if($brand.getStores())
+  <p>Here are the stores that carry this brand:</p>
+  <ul>
+    #foreach($store in $brand.getStores())
+      <li><a href="/stores/$store.getId()">$store.getName()</a></li>
+    #end
+  </ul>
+#end
+
+<h4>Edit this brand:</h4>
+
+<form action="/brands/$brand.getId()/change-description" method="post">
+  <label for="newdescription">New Description</label>
+  <input id="newdescription" name="newdescription" type="text">
+  <button type="submit">Change brand</button>
+</form>
+
+<p><a href='/'>Home</a></p>
