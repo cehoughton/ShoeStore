@@ -95,7 +95,7 @@ public class Store {
 
   public List<Brand> getBrands() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT brand_id AS mId, description as mDescription,  FROM brands INNER JOIN stores_brands ON  brands.id = stores_brands.brand_id WHERE stores_brands.store_id = :store_id ORDER BY brands.is_done, brands.due_date";
+      String sql = "SELECT brand_id AS mId, description as mDescription,  FROM brands INNER JOIN stores_brands ON  brands.id = stores_brands.brand_id WHERE stores_brands.store_id = :store_id";
       return con.createQuery(sql)
         .addParameter("store_id", this.mId)
         .executeAndFetch(Brand.class);

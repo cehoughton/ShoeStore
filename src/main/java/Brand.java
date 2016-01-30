@@ -21,7 +21,7 @@ public class Brand {
   //CONSTRUCTOR
   public Brand(String description) {
     mDescription = description;
-    mIsDone = false;
+
   }
 
   @Override
@@ -37,7 +37,7 @@ public class Brand {
 
 
   public static List<Brand> all() {
-    String sql = "SELECT id AS mId, description AS mDescription, FROM brands ";
+    String sql = "SELECT id AS mId, description AS mDescription, FROM brands where id=:id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Brand.class);
     }
